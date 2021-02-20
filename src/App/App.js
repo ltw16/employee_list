@@ -1,7 +1,27 @@
 import './App.css';
 import SideMenu from "../components/SideMenu";
 import Header from "../components/Header";
-import { CssBaseline, makeStyles } from '@material-ui/core';
+import { CssBaseline, makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core';
+import Employees from '../pages/Employees/Employees';
+
+const theme = createMuiTheme({
+  palette:{
+    primary:{
+      main: '#FF0000',
+      light: '#3c44b126'
+    },
+    secondary: {
+      main: '#f83245',
+      light: '#f8324526'
+    },
+    background:{
+      default: '#f4f5fd'
+    }
+  },
+  shape: {
+    borderRadius: '12px'
+  }
+})
 
 const useStyles = makeStyles({
   appMain:{
@@ -14,13 +34,16 @@ function App() {
   const classes = useStyles();
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <SideMenu /> 
       <div className={classes.appMain}>
         <Header />
+        
+        <Employees />
       </div>
       <CssBaseline />
-    </>
+    </ThemeProvider>
+    
     
   );
 }
